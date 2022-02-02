@@ -7,8 +7,9 @@ import sda.hibernate.util.HibernateUtil;
 
 public class Przyklad2 {
     public static void main(String[] args) {
-        //usePersist();
-        useMerge();
+        usePersist();
+        //useMerge();
+        //useUpdate();
     }
 
 //persist() zawsze tworzy nowy obiekt
@@ -37,11 +38,21 @@ public class Przyklad2 {
         Country country = new Country();
         country.setId(1);
         country.setAlias("ES");
-        session.merge(country);
+        country = (Country) session.merge(country);
         country.setName("Spain Changed");
         session.flush();
         session.close();
     }
 
-    public void useUpdate()
+    public static void useUpdate() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Country country = new Country();
+        country.setId(3);
+        country.setName("Japan");
+        session.update(country);
+        country.setAlias("JP");
+        session.flush();
+        session.close();
+    }
 }
