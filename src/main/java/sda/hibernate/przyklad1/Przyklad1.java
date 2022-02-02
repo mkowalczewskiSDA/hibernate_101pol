@@ -11,7 +11,10 @@ public class Przyklad1 {
         Session session = sessionFactory.openSession();
         Country country = session.find(Country.class, 1);
         System.out.println(country.getName());
+        country.setName("Przyklad");
         session.close();
         sessionFactory.close();
+
+        System.out.println(country.getId());
     }
 }
