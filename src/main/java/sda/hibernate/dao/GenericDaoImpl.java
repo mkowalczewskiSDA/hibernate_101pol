@@ -15,7 +15,7 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
     @Override
     public T findById(int id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = openSession();
         T result = session.find(entityClass, id);
         session.close();
         return result;
@@ -23,7 +23,11 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
     @Override
     public void insertObject(T t) {
-
+        Session session = openSession();
+        session.beginTransaction();
+        session.persist(t);
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override
@@ -49,5 +53,9 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     @Override
     public List<T> getAll(int maxResults, int firstResult) {
         return null;
+    }
+
+    private Session openSession() {
+        return HibernateUtil.getSessionFactory().openSession();
     }
 }

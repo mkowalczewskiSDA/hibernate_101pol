@@ -8,5 +8,10 @@ public class Zadanie1 {
     public static void main(String[] args) {
         GenericDao<Country>  countryDao = new GenericDaoImpl<>(Country.class);
         System.out.println(countryDao.findById(1));
+
+        Country country = new Country();
+        country.setAlias("DE");
+        country.setName("Germany");
+        countryDao.insertObject(country);
     }
 }
