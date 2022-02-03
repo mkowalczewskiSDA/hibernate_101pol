@@ -13,5 +13,11 @@ public class Zadanie1 {
         country.setAlias("DE");
         country.setName("Germany");
         countryDao.insertObject(country);
+
+        countryDao.getAll().forEach(System.out::println);
+        System.out.println("paginacja");
+        countryDao.getAll(2, 0).forEach(System.out::println);
+        System.out.println("strona 2");
+        countryDao.getAll(2, 2).forEach(System.out::println);
     }
 }

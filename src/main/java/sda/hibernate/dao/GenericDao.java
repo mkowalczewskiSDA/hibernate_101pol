@@ -8,7 +8,6 @@ public interface GenericDao<T> {
     void insertObject(T t);
     void deleteObject(T t);
     void deleteObject(int id);
-    public void updateObject(T t, int id);
     public List<T> getAll();
     public List<T> getAll(int maxResults, int firstResult);
 
