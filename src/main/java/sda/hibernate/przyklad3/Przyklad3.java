@@ -1,5 +1,6 @@
 package sda.hibernate.przyklad3;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import sda.hibernate.model.Address;
@@ -20,7 +21,15 @@ public class Przyklad3 {
 
         List<Address> addressList = query.getResultList();
 
+        Query<Address> queryJoin = session.createQuery(
+                "select a from Address a join a.country c where c.name = :countryName", Address.class)
+                .setParameter("countryName", "Poland");
+
+        List<Address> joinedAddressList = queryJoin.getResultList();
+        System.out.println(joinedAddressList.get(0).getCountry().getName());
         session.close();
+
+
 
         System.out.println("test");
         HibernateUtil.getSessionFactory().close();
