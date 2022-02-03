@@ -32,12 +32,23 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
     @Override
     public void deleteObject(T t) {
-
+        Session session = openSession();
+        session.beginTransaction();
+        session.delete(t);
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override
     public void deleteObject(int id) {
-
+        T t = findById(id);
+        if (t != null) {
+            Session session = openSession();
+            session.beginTransaction();
+            session.delete(findById(id));
+            session.getTransaction().commit();
+            session.close();
+        }
     }
 
     @Override
