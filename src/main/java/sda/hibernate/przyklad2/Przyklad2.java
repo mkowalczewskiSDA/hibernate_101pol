@@ -1,6 +1,5 @@
 package sda.hibernate.przyklad2;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import sda.hibernate.model.Country;
 import sda.hibernate.util.HibernateUtil;
@@ -8,9 +7,9 @@ import sda.hibernate.util.HibernateUtil;
 public class Przyklad2 {
     public static void main(String[] args) {
         //usePersist();
-        //useMerge();
+        useMerge();
         //useUpdate();
-        useDelete();
+        //useDelete();
     }
 
 //persist() zawsze tworzy nowy obiekt
@@ -23,7 +22,7 @@ public class Przyklad2 {
         session.beginTransaction();
         session.persist(country);
         country.setName("India");
-        session.flush();
+        session.getTransaction().commit();
         session.close();
     }
 //merge() aktualizuje lub dodaje nowy obiekt obiektu Session
@@ -40,8 +39,8 @@ public class Przyklad2 {
         country.setId(1);
         country.setAlias("ES");
         country = (Country) session.merge(country);
-        country.setName("Spain Changed");
-        session.flush();
+        country.setName("Spain");
+        session.getTransaction().commit();
         session.close();
     }
 
@@ -53,7 +52,7 @@ public class Przyklad2 {
         country.setName("Japan");
         session.update(country);
         country.setAlias("JP");
-        session.flush();
+        session.getTransaction().commit();
         session.close();
     }
 
@@ -63,7 +62,7 @@ public class Przyklad2 {
         Country country = new Country();
         country.setId(3);
         session.delete(country);
-        session.flush();
+        session.getTransaction().commit();
         session.close();
     }
 }
