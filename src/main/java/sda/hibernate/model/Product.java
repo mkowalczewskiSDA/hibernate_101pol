@@ -1,7 +1,9 @@
 package sda.hibernate.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,6 +13,8 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
+@ToString(exclude = "orders")
+@EqualsAndHashCode(exclude = "orders")
 public class Product {
 
     @Id

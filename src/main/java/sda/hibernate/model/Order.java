@@ -1,6 +1,6 @@
 package sda.hibernate.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -29,6 +29,5 @@ public class Order {
     joinColumns = {@JoinColumn(name = "CRT_ORD_ID")},
     inverseJoinColumns = {@JoinColumn(name = "CRT_PRO_ID")})
     private Set<Product> products = new HashSet<>();
-
 
 }
