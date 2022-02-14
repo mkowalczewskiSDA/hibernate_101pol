@@ -17,12 +17,6 @@ public class Przyklad1 {
         session.close();
         sessionFactory.close();
 
-        Order order = new Order();
-        order.getUser();
-        User user = new User();
-        user.getOrders();
-
-
         System.out.println(country.getId());
     }
 }

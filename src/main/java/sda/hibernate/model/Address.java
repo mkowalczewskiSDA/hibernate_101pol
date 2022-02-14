@@ -30,6 +30,6 @@ public class Address {
     @JoinColumn(name = "ADD_CO_ID", referencedColumnName = "CO_ID")
     private Country country;
     @OneToMany(mappedBy = "address")
-    private Set<Address> addresses;
+    private Set<User> addresses;
 
 }
