@@ -26,11 +26,24 @@ public class Przyklad3 {
                 .setParameter("countryName", "Poland");
 
         List<Address> joinedAddressList = queryJoin.getResultList();
-        System.out.println(joinedAddressList.get(0).getCountry().getName());
+        System.out.println("test");
+        Address address = joinedAddressList.get(0);
+        Country country = new Country();
+        country.setName("China");
+        country.setAlias("CH");
+        session.beginTransaction();
+        session.persist(country);
+        session.getTransaction().commit();
         session.close();
-
-
-
+        System.out.println("");
+        address.setCountry(country);
+        System.out.println("");
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.merge(address);
+        session.getTransaction().commit();
+        //System.out.println(joinedAddressList.get(0).getCountry().getName());
+        session.close();
         System.out.println("test");
         HibernateUtil.getSessionFactory().close();
         System.out.println();

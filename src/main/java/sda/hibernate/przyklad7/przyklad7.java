@@ -8,5 +8,7 @@ public class przyklad7 {
         userCriteriaDao.findUserWhereNameContains("sk")
                 .forEach(System.out::println);
 
+        userCriteriaDao.findAllByCountryAlias("DE").forEach(System.out::println);
+
     }
 }
