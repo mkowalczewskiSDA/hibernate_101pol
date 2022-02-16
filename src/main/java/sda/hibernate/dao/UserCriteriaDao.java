@@ -40,7 +40,7 @@ public class UserCriteriaDao {
         return users;
     }
 
-    public List<User> findAllBornBetweens(LocalDate date1, LocalDate date2) {
+    public List<User> findAllBornBetween(LocalDate date1, LocalDate date2) {
         return null;
     }
 
