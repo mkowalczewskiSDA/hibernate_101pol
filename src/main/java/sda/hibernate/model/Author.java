@@ -9,7 +9,7 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
-public class Author {
+public class Author extends EntityInfo {
 
     @Id
     private int id;

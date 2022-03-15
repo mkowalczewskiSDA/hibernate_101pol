@@ -55,4 +55,33 @@ public class UserCriteriaDao {
         return users;
     }
 
+    public List<User> findAllWhoBoughtProduct(Product product) {
+        Root<User> userRoot = getRoot();
+        Join<User, Order> orderFetch = userRoot.join(User_.orders);
+        Join<Order, Product> productFetch = orderFetch.join(Order_.PRODUCTS);
+        criteriaQuery.select(userRoot).where(criteriaBuilder.equal(productFetch, product));
+        Query query = session.createQuery(criteriaQuery);
+        List<User> users = query.getResultList();
+        session.close();
+        return users;
+
+    }
+
+    public List<User> findNonCriterisAllWhoBoughtProduct(Product product) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        Query query = session.createQuery(
+                "select u from User u " +
+                        "join u.orders o " +
+                        "join o.products p " +
+                        "where p = :product",
+                User.class
+
+        ).setParameter("product", product);
+
+        List<User> productList = query.getResultList();
+        session.close();
+        return productList;
+    }
+
 }

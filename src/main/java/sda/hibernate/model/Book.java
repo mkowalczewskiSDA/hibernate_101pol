@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
-public class Book {
+public class Book extends EntityInfo {
 
     @Id
     private int id;

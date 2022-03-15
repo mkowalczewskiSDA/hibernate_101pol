@@ -10,7 +10,8 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 @Data
-public class Address {
+@Table(name = "lalalala")
+public class Address extends EntityInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
