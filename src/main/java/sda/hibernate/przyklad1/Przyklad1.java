@@ -3,10 +3,8 @@ package sda.hibernate.przyklad1;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import sda.hibernate.model.Country;
-import sda.hibernate.model.Order;
-import sda.hibernate.model.Product;
-import sda.hibernate.model.User;
+import sda.hibernate.dao.GenericDao;
+import sda.hibernate.model.*;
 
 import java.util.Set;
 

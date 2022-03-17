@@ -21,7 +21,7 @@ public class Order {
     private LocalDateTime orderDate;
     @Column(name = "ORD_PRICE")
     private BigDecimal orderPrice;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name= "ORD_USR_ID", referencedColumnName = "USR_ID")
     private User user;
     @ManyToMany(fetch = FetchType.LAZY)

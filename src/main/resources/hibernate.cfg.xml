@@ -5,14 +5,14 @@
 <hibernate-configuration>
 
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/test?serverTimezone=CET&amp;createDatabaseIfNotExist=true</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/test2?serverTimezone=CET&amp;createDatabaseIfNotExist=true</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">validate</property>
 
         <mapping class="sda.hibernate.model.Country"/>
         <mapping class="sda.hibernate.model.Address"/>

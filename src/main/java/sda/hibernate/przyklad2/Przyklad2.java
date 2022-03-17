@@ -1,13 +1,14 @@
 package sda.hibernate.przyklad2;
 
 import org.hibernate.Session;
+import sda.hibernate.model.Address;
 import sda.hibernate.model.Country;
 import sda.hibernate.util.HibernateUtil;
 
 public class Przyklad2 {
     public static void main(String[] args) {
-        //usePersist();
-        useMerge();
+        usePersist();
+        //useMerge();
         //useUpdate();
         //useDelete();
     }
@@ -18,10 +19,18 @@ public class Przyklad2 {
     public static void usePersist() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Country country = new Country();
-        country.setAlias("IN");
+        country.setAlias("TE");
+        country.setName("Test");
+        Address address = new Address(
+                "street",
+                "1",
+                "1",
+                "city",
+                "00-000",
+                country
+        );
         session.beginTransaction();
-        session.persist(country);
-        country.setName("India");
+        session.persist(address);
         session.getTransaction().commit();
         session.close();
     }

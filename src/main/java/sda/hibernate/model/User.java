@@ -32,7 +32,7 @@ public class User {
     private Address address;
     @Column(name = "USR_BIRTH_DATE")
     private LocalDate birthDate;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<Order> orders = new HashSet<>();
 
 

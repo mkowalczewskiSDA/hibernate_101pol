@@ -13,6 +13,7 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
         this.entityClass = entityClass;
     }
 
+
     @Override
     public T findById(int id) {
         Session session = openSession();

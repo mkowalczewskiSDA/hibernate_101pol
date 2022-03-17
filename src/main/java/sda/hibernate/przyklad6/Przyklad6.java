@@ -3,6 +3,7 @@ package sda.hibernate.przyklad6;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import sda.hibernate.model.Address;
+import sda.hibernate.model.Address_;
 import sda.hibernate.util.HibernateUtil;
 
 import javax.persistence.Query;
@@ -18,6 +19,7 @@ public class Przyklad6 {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Address> criteriaQuery = builder.createQuery(Address.class);
         Root<Address> addressRoot = criteriaQuery.from(Address.class);
+        addressRoot.fetch(Address_.country);
         criteriaQuery.select(addressRoot);
         Query query = session.createQuery(criteriaQuery);
         List<Address> addresses = query.getResultList();
